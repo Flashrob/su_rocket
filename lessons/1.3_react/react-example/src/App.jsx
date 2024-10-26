@@ -7,7 +7,8 @@ function App() {
   return (
     <>
       <h1>React App</h1>
-      {showSecret ? <Secret /> : null}
+      {/* {showSecret ? <Secret /> : null} */}
+      {showSecret && <Secret />}
       <button onClick={() => setShowSecret(!showSecret)}>
         Click me for a big secret
       </button>

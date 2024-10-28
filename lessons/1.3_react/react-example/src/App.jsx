@@ -1,29 +1,34 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import "./App.css";
 
 function App() {
   const [value, setValue] = useState("");
-  const [submittedTitle, setSubmittedTitle] = useState("");
+  const [hasClicked, setHasClicked] = useState(false);
+  const [unrelatedClick, setUnrelatedClick] = useState(false);
+
+  useEffect(() => {
+    if (hasClicked) {
+      console.log("CLEARED THE INPUT");
+    }
+
+    setHasClicked(false);
+  }, [hasClicked]);
+
+  // useEffect( //Second way of writing the above
+  //   function clearInput() {
+  //     if (hasClicked) {
+  //       console.log("CLEARED THE INPUT");
+  //     }
+
+  //     setHasClicked(false);
+  //   },
+  //   [hasClicked]
+  // );
+
   return (
     <>
       <h1>React App</h1>
-
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          setSubmittedTitle(value);
-          setValue("");
-        }}
-      >
-        <input
-          type="text"
-          value={value}
-          onChange={(event) => {
-            setValue(event.target.value);
-          }}
-        />
-        <button type="submit">Submit</button>
-      </form>
 
       <input
         type="text"
@@ -34,13 +39,21 @@ function App() {
       />
       <button
         onClick={() => {
-          setSubmittedTitle(value);
+          setHasClicked(true);
           setValue("");
         }}
       >
         Submit
       </button>
-      {submittedTitle && <h1>{submittedTitle}</h1>}
+      <p>{value}</p>
+
+      <button
+        onClick={() => {
+          setUnrelatedClick(!unrelatedClick);
+        }}
+      >
+        DON'T TRIGGER EFFECT
+      </button>
     </>
   );
 }

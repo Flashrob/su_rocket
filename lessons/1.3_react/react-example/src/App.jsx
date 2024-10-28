@@ -6,10 +6,14 @@ function App() {
   const [value, setValue] = useState("");
   const [hasClicked, setHasClicked] = useState(false);
   const [unrelatedClick, setUnrelatedClick] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     if (hasClicked) {
       console.log("CLEARED THE INPUT");
+
+      console.log("SUDDENLY GOT AN ERROR");
+      setIsError(!isError);
     }
 
     setHasClicked(false);
@@ -54,6 +58,8 @@ function App() {
       >
         DON'T TRIGGER EFFECT
       </button>
+
+      {isError && <h1 style={{ color: "red" }}>ERROR</h1>}
     </>
   );
 }

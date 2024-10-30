@@ -100,3 +100,14 @@ addNumber() <- maybe a function to add a number
 const state = [1,2,3,4,5]
 setState([...state, 6])
 */
+
+const obj = {
+  name: "abdef",
+  age: 5,
+  address: "here",
+};
+
+// safely copying objects and arrays without reference issues
+const objTwo = { ...obj, age: 2 };
+const arr = [1, 2, 3, 4];
+const arrTwo = [...arr];

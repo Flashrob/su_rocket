@@ -1,5 +1,8 @@
 import "./App.css";
 
+console.log(import.meta.env.VITE_PASSWORD);
+console.log(import.meta.env);
+
 function App() {
   return (
     <>

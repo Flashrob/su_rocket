@@ -1,3 +1,8 @@
+# How to setup the app
+
+1. Copy .env.dist and remove .dist from file name
+2. Place API Key from Weather app into .env
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

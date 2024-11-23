@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const pokemon = require("./database.js");
+const pokemonController = require("./pokemonController.js");
 const app = express();
 const port = 3000;
 
@@ -13,12 +13,18 @@ Pokemon: { id, name, type }
 
 1. Create a route to serve all pokemon
 2. Create a route to serve 1 pokemon by name
+3. For 1., add the ability to filter the list by type
+4. Add one pokemon to the list; if successful, the pokemon will be returned
+5. Delete one pokemon from the list
+6. Update a pokemon (type, or name)
 
 */
 
-app.get("/pokemon", (req, res) => {
-  res.json(pokemon);
-});
+app.get("/pokemon", pokemonController.getAllPokemon);
+app.get("/pokemon/:name", pokemonController.getOnePokemonByName);
+app.post("/pokemon", pokemonController.createPokemon);
+app.put("/pokemon/:name", pokemonController.updatePokemonByName);
+app.delete("/pokemon/:name", pokemonController.deletePokemonByName);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

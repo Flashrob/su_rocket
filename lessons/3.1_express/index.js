@@ -1,28 +1,23 @@
 const express = require("express");
 const cors = require("cors");
+const pokemon = require("./database.js");
 const app = express();
 const port = 3000;
 
 app.use(express.json()); // middleware to accept json request bodies
 app.use(cors()); // allows requests from cross-origin (not same origin)
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+/* 
+Pre-requisite: Create a datastructure with 5-10 Pokemon
+Pokemon: { id, name, type }
 
-app.get("/pokemon", (request, response) => {
-  response.status(404).send("Error");
-});
+1. Create a route to serve all pokemon
+2. Create a route to serve 1 pokemon by name
 
-app.get("/number", (req, res) => {
-  res.status(200).json({ num: 5 });
-});
+*/
 
-app.post("/students", (req, res) => {
-  // const name = req.body.name;
-  const { name } = req.body;
-  // here there is some process happening, where we register the student
-  res.json({ message: `Successfully registered ${name}` });
+app.get("/pokemon", (req, res) => {
+  res.json(pokemon);
 });
 
 app.listen(port, () => {

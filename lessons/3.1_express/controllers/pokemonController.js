@@ -1,4 +1,4 @@
-const pokemonList = require("./database.js");
+const pokemonList = require("../database.js");
 
 const getAllPokemon = (req, res) => {
   const { type } = req.query;
@@ -23,6 +23,7 @@ const getOnePokemonByName = (req, res) => {
 };
 
 const createPokemon = (req, res) => {
+  const { name } = req.body;
   const pokemon = pokemonList.find((pokemon) => pokemon.name === name);
   if (pokemon) return res.status(400).send("Pokemon already exists");
 

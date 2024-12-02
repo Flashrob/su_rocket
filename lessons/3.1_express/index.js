@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 const pokemonRouter = require("./routers/pokemonRouter.js");
 const userRouter = require("./routers/userRouter.js");
 
@@ -11,17 +10,8 @@ const mongoDB = process.env.DB_URI;
 const app = express();
 const port = 3000;
 
-async function main() {
-  await mongoose.connect(mongoDB);
-  console.log("Successfully connected to DB!");
-}
-
-main().catch((err) => console.log(err));
-
-const pokemonSchema = new Schema({ name: String });
-
-const Pokemon = mongoose.model("Pokemon", pokemonSchema);
-Pokemon.find().then((result) => console.log(result));
+mongoose.connect(mongoDB);
+console.log("Successfully connected to DB!");
 
 app.use(express.json()); // middleware to accept json request bodies
 app.use(cors()); // allows requests from cross-origin (not same origin)

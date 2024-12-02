@@ -1,9 +1,27 @@
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 const pokemonRouter = require("./routers/pokemonRouter.js");
 const userRouter = require("./routers/userRouter.js");
+
+const mongoDB = process.env.DB_URI;
+
 const app = express();
 const port = 3000;
+
+async function main() {
+  await mongoose.connect(mongoDB);
+  console.log("Successfully connected to DB!");
+}
+
+main().catch((err) => console.log(err));
+
+const pokemonSchema = new Schema({ name: String });
+
+const Pokemon = mongoose.model("Pokemon", pokemonSchema);
+Pokemon.find().then((result) => console.log(result));
 
 app.use(express.json()); // middleware to accept json request bodies
 app.use(cors()); // allows requests from cross-origin (not same origin)
@@ -20,6 +38,14 @@ Pokemon: { id, name, type }
 6. Update a pokemon (type, or name)
 7. Refactor request functions into a controller file
 8. Refactor routes into a routes file
+9. Connect do mongoDB using mongoose
+10. Setup the whole pokemon app to use DB instead of static db file
+11. Setup pokemon attacks
+12. Able to retrieve and update the attacks of a Pokemon
+
+// I want to be able to see the attacks of my pokemon
+// I want to be able to update/delete/overwrite the attacks of my pokemon
+// Any Pokemon can only have 4 attacks
 
 Repeat 1-8 for "User"
 

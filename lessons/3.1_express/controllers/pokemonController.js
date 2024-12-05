@@ -1,7 +1,7 @@
 const PokemonModel = require("../db/models/Pokemon.js");
 
 const getAllPokemon = async (req, res) => {
-  const pokemonList = await PokemonModel.find();
+  const pokemonList = await PokemonModel.findAll();
 
   const { type } = req.query;
   if (!type) return res.json(pokemonList);

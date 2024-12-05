@@ -32,6 +32,7 @@ Pokemon: { id, name, type }
 10. Setup the whole pokemon app to use DB instead of static db file
 11. Setup pokemon attacks
 12. Able to retrieve and update the attacks of a Pokemon
+13. If attacks is not a collection, make it a collection and use referencing
 
 // I want to be able to see the attacks of my pokemon
 // I want to be able to update/delete/overwrite the attacks of my pokemon

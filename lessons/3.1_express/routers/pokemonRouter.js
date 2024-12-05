@@ -1,8 +1,6 @@
 const router = require("express").Router();
 const pokemonController = require("../controllers/pokemonController.js");
 
-// app.use("/pokemon", pokemonRouter);
-
 router.get("/", pokemonController.getAllPokemon);
 router.get("/:name", pokemonController.getOnePokemonByName);
 router.post("/", pokemonController.createPokemon);

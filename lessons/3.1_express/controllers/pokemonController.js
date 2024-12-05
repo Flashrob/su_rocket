@@ -1,7 +1,7 @@
 const PokemonModel = require("../db/models/Pokemon.js");
 
 const getAllPokemon = async (req, res) => {
-  const pokemonList = await PokemonModel.findAll();
+  const pokemonList = await PokemonModel.findAll(); // just an example of an abstraction I can create
 
   const { type } = req.query;
   if (!type) return res.json(pokemonList);

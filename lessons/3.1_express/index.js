@@ -19,8 +19,8 @@ Requirements:
 - The application should allow the user to create, read, update and delete todo items
 - The application should allow the user to login and reject a user with a wrong email/password combination
 - I want to keep track of the age of any todo created and want to also know when it was last updated
-- I should be able to retrieve a list of todos, but also be able to retrieve a single todo
-- Each todo created should belong to a category: household, work, shopping, family, others
+- I should be able to retrieve all of his todos, but also be able to retrieve a single todo
+- Each todo created should belong to a category: household, work, shopping, family, others, ... and many more
 - Each todo should have multiple statuses based on their completion
 - I should be able to update the title and the category of any todo
 - I should be able to update the completion status of my todos
@@ -29,8 +29,8 @@ Requirements:
 
 /* 
 1. Create an ERD
-2. Create a Backend Application
-3. Create a Frontend Application
+- Create a Backend Application
+- Create a Frontend Application
 
 */
 

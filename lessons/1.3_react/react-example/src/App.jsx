@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import { useContext } from "react";
 import { createContext } from "react";
 import "./App.css";
@@ -6,14 +7,7 @@ import "./App.css";
 const UserContext = createContext();
 
 function Component1() {
-  const [user, setUser] = useState("Jesse Hall");
-
-  return (
-    <UserContext.Provider value={{ user: user, setUser: setUser }}>
-      <h1>{`Hello ${user}!`}</h1>
-      <Component2 />
-    </UserContext.Provider>
-  );
+  return <Component2 />;
 }
 
 function Component2() {
@@ -35,6 +29,8 @@ function Component3() {
 }
 
 function Component4() {
+  const userContext = useContext(UserContext);
+  console.log(userContext.user);
   return (
     <>
       <h1>Component 4</h1>
@@ -45,7 +41,6 @@ function Component4() {
 
 function Component5() {
   const userContext = useContext(UserContext);
-  console.log(userContext);
 
   return (
     <>
@@ -58,12 +53,50 @@ function Component5() {
   );
 }
 
+const exampleUser = {
+  email: "rob@rob.com",
+  password: "12345",
+  id: 1,
+  name: "Rob",
+};
+
 function App() {
+  const [user, setUser] = useState({});
+
   return (
-    <>
+    <UserContext.Provider value={{ user: user, setUser: setUser }}>
       <Component1 />
-    </>
+      <LoginPage />
+    </UserContext.Provider>
   );
 }
+
+const LoginPage = () => {
+  const userContext = useContext(UserContext);
+  // userContext.user
+  // userContext.setUser
+  console.log(userContext);
+  const login = async () => {
+    try {
+      const user = exampleUser;
+      // await axios.post("localhost:3000/login", {
+      //   email,
+      //   password,
+      // });
+      userContext.setUser(user);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  return (
+    <button
+      onClick={() => {
+        login();
+      }}
+    >
+      Login
+    </button>
+  );
+};
 
 export default App;

@@ -19,9 +19,22 @@ app.get("/", async (req, res) => {
   const [rows] = await db.query("SELECT * FROM Users");
   console.log(rows);
 
-  res.send("Hello World!");
+  res.json(rows);
 });
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+
+/* 
+Requirements
+
+I want to build an API, that I can use for my Pokemon game. 
+The API should allow me to CRUD Trainers.
+Trainers should be able to collect items and also to use them. (CRUD)
+Additionally, Trainers should be able to catch up to 6 Pokemon. (CRUD)
+
+Trainers can not share Pokemon. Trainers can not share items.
+
+Please design the ERD for the Application, and set up the API.
+*/
